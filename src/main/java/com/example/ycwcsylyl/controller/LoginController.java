@@ -9,9 +9,12 @@ import org.springframework.web.util.HtmlUtils;
 
 import com.example.ycwcsylyl.pojo.User;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class LoginController {
+
     @Autowired
     UserService userService;
 
@@ -27,9 +30,9 @@ public class LoginController {
         if (null == user) {
             return new Result(400);
         } else {
+            session.setAttribute("user", user);
             return new Result(200);
         }
 
     }
 }
-
